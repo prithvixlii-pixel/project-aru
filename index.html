@@ -11,7 +11,7 @@
             font-family: 'Georgia', serif;
             text-align: center;
             padding: 50px 20px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
         .container {
             max-width: 600px;
@@ -19,21 +19,31 @@
         }
         h1 {
             color: #ff4d6d;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 30px;
+            letter-spacing: -1px;
         }
         p {
             font-size: 1.1rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            color: #444;
+            text-align: justify;
+            text-justify: inter-word;
         }
-        .music-container {
-            margin-top: 40px;
-            opacity: 0.8;
+        .audio-wrapper {
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+        audio {
+            width: 100%;
+            filter: grayscale(100%) opacity(0.7); /* Makes the player look more subtle */
         }
         .highlight {
             font-weight: bold;
             display: block;
-            margin-top: 20px;
+            margin-top: 30px;
+            color: #000;
         }
     </style>
 </head>
@@ -57,10 +67,11 @@
             <span class="highlight">This is a let down and consequently he has decided to Disappear Completely.</span>
         </p>
 
-        <div class="music-container">
-            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
-                src="https://www.youtube.com/embed/M_wGLZmwZ8o">
-            </iframe>
+        <div class="audio-wrapper">
+            <audio controls>
+                <source src="let-down.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
     </div>
 
