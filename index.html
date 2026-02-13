@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error 404</title>
     <style>
+        /* Overlay to trigger the audio interaction */
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            cursor: pointer;
+            transition: opacity 1.5s ease;
+        }
+        #overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         body {
             background-color: #f8f9fa;
             color: #333;
@@ -21,23 +38,12 @@
             color: #ff4d6d;
             font-size: 2.2rem;
             margin-bottom: 30px;
-            letter-spacing: -1px;
         }
         p {
             font-size: 1.1rem;
             margin-bottom: 25px;
             color: #444;
             text-align: justify;
-            text-justify: inter-word;
-        }
-        .audio-wrapper {
-            margin-top: 50px;
-            padding: 20px;
-            border-top: 1px solid #eee;
-        }
-        audio {
-            width: 100%;
-            filter: grayscale(100%) opacity(0.7); /* Makes the player look more subtle */
         }
         .highlight {
             font-weight: bold;
@@ -45,15 +51,22 @@
             margin-top: 30px;
             color: #000;
         }
+        audio {
+            display: none; /* Hide the player to keep it clean */
+        }
     </style>
 </head>
 <body>
+
+    <div id="overlay" onclick="startEverything()">
+        <p style="font-style: italic; color: #888;">(click anywhere)</p>
+    </div>
 
     <div class="container">
         <h1>💔 Error 404 💔</h1>
         
         <p>
-            The artist, whose work you are looking for feels that you will never hold even a fraction of value that they hold for you. 
+            The artist, whose work you are looking for feels that they will never hold even a fraction of value that you hold for them. 
             He feels you will not even care enough to come back to this website ever again to look at this but he still hopes that you will and is thus leaving this here.
             <br><br>
             It is his own fault for being so intrusive and indulgent where it was never welcome.<br>
@@ -67,13 +80,23 @@
             <span class="highlight">This is a let down and consequently he has decided to Disappear Completely.</span>
         </p>
 
-        <div class="audio-wrapper">
-            <audio controls>
-                <source src="let-down.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
+        <audio id="myAudio" loop>
+            <source src="let-down.mp3" type="audio/mpeg">
+        </audio>
     </div>
+
+    <script>
+        function startEverything() {
+            const audio = document.getElementById("myAudio");
+            const overlay = document.getElementById("overlay");
+            
+            // Play the audio
+            audio.play();
+            
+            // Hide the overlay
+            overlay.classList.add("hidden");
+        }
+    </script>
 
 </body>
 </html>
